@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghana Birth & Death Registry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🇬🇭 Ghana Birth & Death Registry</h1>
+            <nav>
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('birth')">Register Birth</a>
+                <a href="#" onclick="showSection('death')">Register Death</a>
+                <a href="#" onclick="showSection('search')">Search Records</a>
+                <a href="#" onclick="showSection('admin')">Admin Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+     <!-- Home Section -->
+<section id="home-section" class="section active">
+    <div class="hero">
+        <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
+            <h1>🇬🇭 Ghana Digital Registry</h1>
+        </div>
+        <h2>Modern Birth & Death Registration System</h2>
+        <p>Streamlining civil registration in Ghana with secure, efficient, and accessible digital solutions</p>
+        
+        <div class="quick-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0;">
+            <button class="btn btn-primary" onclick="showSection('birth')">
+                📝 Register Birth
+            </button>
+            <button class="btn btn-secondary" onclick="showSection('death')">
+                ⚰️ Register Death
+            </button>
+            <button class="btn btn-outline" onclick="showSection('search')">
+                🔍 Search Records
+            </button>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Fast Processing</h3>
+            <p>Reduce registration time from days to minutes with our streamlined digital process</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile Friendly</h3>
+            <p>Works perfectly on all devices - computers, tablets, and smartphones</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure & Compliant</h3>
+            <p>Fully compliant with Registration of Births & Deaths Act, 2020</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3>Works Offline</h3>
+            <p>Continue working without internet connection - data syncs automatically when back online</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📄</div>
+            <h3>Instant Certificates</h3>
+            <p>Generate official birth and death certificates instantly in PDF format</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">💾</div>
+            <h3>Data Backup</h3>
+            <p>Automatic data backup and secure cloud storage for all records</p>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div style="margin-top: 3rem; text-align: center;">
+        <div id="system-status" class="feature-card" style="max-width: 500px; margin: 0 auto;">
+            <h3>System Status</h3>
+            <div id="online-status" class="status-badge status-completed" style="display: inline-block; margin: 0.5rem 0;">
+                🟢 System Online
+            </div>
+            <p style="color: #666; font-size: 0.9rem;">All systems operational</p>
+        </div>
+    </div>
+</section>
+
+        <!-- Birth Registration Section -->
+        <section id="birth-section" class="section">
+            <h2>Birth Registration Form</h2>
+            <form id="birth-form" class="registration-form">
+                <div class="form-group">
+                    <label>Child's Information</label>
+                    <input type="text" name="child_first_name" placeholder="First Name *" required>
+                    <input type="text" name="child_last_name" placeholder="Last Name *" required>
+                    <input type="text" name="child_other_names" placeholder="Other Names">
+                </div>
+
+                <div class="form-group">
+                    <label>Date and Place of Birth</label>
+                    <label for="date_of_birth">Date of Birth</label>
+                    <input type="date" name="date_of_birth" id="date_of_birth" title="Select date of birth" required>
+                    <label for="time_of_birth">Time of Birth</label>
+                    <input type="time" name="time_of_birth" id="time_of_birth" placeholder="hh:mm" title="Enter time of birth">
+                    <input type="text" name="place_of_birth" placeholder="Hospital/Home Address *" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birth-gender">Gender & Details</label>
+                    <select name="gender" id="birth-gender" required aria-label="Gender">
+                        <option value="">Select Gender *</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <input type="number" step="0.1" name="weight_kg" placeholder="Weight (kg)">
+                </div>
+
+                <div class="form-group">
+                    <label>Mother's Information</label>
+                    <input type="text" name="mother_first_name" placeholder="First Name *" required>
+                    <input type="text" name="mother_last_name" placeholder="Last Name *" required>
+                    <input type="text" name="mother_national_id" placeholder="Ghana Card (GHA-XXX-0000-X)">
+                    <div class="form-hint">Format: GHA-XXX-0000-X (optional)</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Father's Information</label>
+                    <input type="text" name="father_first_name" placeholder="First Name *" required>
+                    <input type="text" name="father_last_name" placeholder="Last Name *" required>
+                    <input type="text" name="father_national_id" placeholder="Ghana Card (GHA-XXX-0000-X)">
+                    <div class="form-hint">Format: GHA-XXX-0000-X (optional)</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Informant Details</label>
+                    <input type="text" name="informant_name" placeholder="Informant Name">
+                    <input type="text" name="informant_relationship" placeholder="Relationship to Child">
+                    <input type="tel" name="informant_contact" placeholder="Contact Number (0201234567)">
+                    <div class="form-hint">Phone format: 0201234567 or +233201234567</div>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Birth Registration</button>
+            </form>
+        </section>
+
+        <!-- Death Registration Section -->
+        <section id="death-section" class="section">
+            <h2>Death Registration Form</h2>
+            <form id="death-form" class="registration-form">
+                <div class="form-group">
+                    <label>Deceased Person's Information</label>
+                    <input type="text" name="deceased_first_name" placeholder="First Name *" required>
+                    <input type="text" name="deceased_last_name" placeholder="Last Name *" required>
+                    <input type="text" name="deceased_other_names" placeholder="Other Names">
+                </div>
+
+                <div class="form-group">
+                    <label>Date and Place of Death</label>
+                    <label for="date_of_death">Date of Death</label>
+                    <input type="date" name="date_of_death" id="date_of_death" title="Select date of death" required>
+                    <label for="time_of_death">Time of Death</label>
+                    <input type="time" name="time_of_death" id="time_of_death" placeholder="hh:mm" title="Enter time of death">
+                    <input type="text" name="place_of_death" placeholder="Hospital/Home Address *" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Death Details</label>
+                    <input type="text" name="cause_of_death" placeholder="Cause of Death">
+                    <input type="number" name="age_at_death" placeholder="Age at Death">
+                    <labellabel for="death-gender">Gender</label>
+                    <select name="gender" id="death-gender" required aria-label="Gender">
+                        <option value="">Select Gender *</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Personal Information</label>
+                    <input type="text" name="nationality" placeholder="Nationality" value="Ghanaian">
+                    <input type="text" name="occupation" placeholder="Occupation">
+                    <labellabel for="marital-status">Marital Status</label>
+                    <select name="marital_status" id="marital-status" aria-label="Marital Status">
+                        <option value="">Select Marital Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Informant Details</label>
+                    <input type="text" name="informant_name" placeholder="Informant Name">
+                    <input type="text" name="informant_relationship" placeholder="Relationship to Deceased">
+                    <input type="tel" name="informant_contact" placeholder="Contact Number (0201234567)">
+                    <div class="form-hint">Phone format: 0201234567 or +233201234567</div>
+                </div>
+
+                <button type="submit" class="btn-secondary">Submit Death Registration</button>
+            </form>
+        </section>
+
+        <!-- Advanced Search Section -->
+        <section id="search-section" class="section">
+            <h2>Advanced Search & Filtering</h2>
+            
+            <div class="search-tabs">
+                <button class="tab-button active" onclick="openSearchTab('birth-search')">Search Births</button>
+                <button class="tab-button" onclick="openSearchTab('death-search')">Search Deaths</button>
+            </div>
+
+            <!-- Birth Search Tab -->
+            <div id="birth-search" class="search-tab-content active">
+                <form id="birth-search-form" class="advanced-search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Child's First Name</label>
+                            <input type="text" name="firstName" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label>Child's Last Name</label>
+                            <input type="text" name="lastName" placeholder="Last name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date Range</label>
+                            <input type="date" name="dateFrom" placeholder="From date">
+                            <input type="date" name="dateTo" placeholder="To date">
+                        </div>
+                        <div class="form-group">
+                            <label>Place of Birth</label>
+                            <input type="text" name="place" placeholder="Hospital or location">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Mother's Name</label>
+                            <input type="text" name="motherName" placeholder="Mother's first or last name">
+                        </div>
+                        <div class="form-group">
+                            <label>Father's Name</label>
+                            <input type="text" name="fatherName" placeholder="Father's first or last name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Registration Number</label>
+                            <input type="text" name="registrationNumber" placeholder="BRGH...">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">🔍 Search Birth Records</button>
+                    <button type="button" onclick="clearBirthSearch()" class="btn-secondary">🗑️ Clear Filters</button>
+                </form>
+            </div>
+
+            <!-- Death Search Tab -->
+            <div id="death-search" class="search-tab-content">
+                <form id="death-search-form" class="advanced-search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Deceased First Name</label>
+                            <input type="text" name="firstName" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label>Deceased Last Name</label>
+                            <input type="text" name="lastName" placeholder="Last name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date of Death Range</label>
+                            <input type="date" name="dateFrom" placeholder="From date">
+                            <input type="date" name="dateTo" placeholder="To date">
+                        </div>
+                        <div class="form-group">
+                            <label>Place of Death</label>
+                            <input type="text" name="place" placeholder="Hospital or location">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Cause of Death</label>
+                            <input type="text" name="cause" placeholder="Cause of death">
+                        </div>
+                        <div class="form-group">
+                            <label>Age Range</label>
+                            <input type="number" name="ageFrom" placeholder="From age" min="0" max="150">
+                            <input type="number" name="ageTo" placeholder="To age" min="0" max="150">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Registration Number</label>
+                            <input type="text" name="registrationNumber" placeholder="DRGH...">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">🔍 Search Death Records</button>
+                    <button type="button" onclick="clearDeathSearch()" class="btn-secondary">🗑️ Clear Filters</button>
+                </form>
+            </div>
+
+            <!-- Search Results -->
+            <div id="search-results" class="search-results">
+                <h3>Search Results</h3>
+                <div id="results-container"></div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section id="admin-section" class="section">
+            <div id="login-form-container">
+                <h2>Registry Official Login</h2>
+                <form id="login-form" class="registration-form">
+                    <div class="form-group">
+                        <label>Login Credentials</label>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                <p><strong>Default login:</strong> admin / admin123</p>
+            </div>
+            
+            <div id="admin-content">
+                <h2>Administrator Dashboard</h2>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <h3>Total Birth Registrations</h3>
+                        <p id="total-births">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Death Registrations</h3>
+                        <p id="total-deaths">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Today's Registrations</h3>
+                        <p id="today-registrations">0</p>
+                    </div>
+                </div>
+                
+                <div class="admin-actions">
+                    <button onclick="loadAllRecords('births')" class="btn-primary">View All Births</button>
+                    <button onclick="loadAllRecords('deaths')" class="btn-secondary">View All Deaths</button>
+                    <button onclick="exportData()" class="btn-primary">Export Data</button>
+                </div>
+                
+                <div id="records-table" class="records-table"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ghana Birth & Death Registry. All rights reserved.</p>
+            <p>Compliant with Registration of Births & Deaths Act, 2020</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+<!-- Add this before the main script.js -->
+<script src="offlineDB.js"></script>
+<script src="script.js"></script>
+
+
+    <script>
+  // Register Service Worker for offline capability
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+    });
+  }
+
+  // Listen for messages from Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('message', function(event) {
+      if (event.data && event.data.type === 'SYNC_SUCCESS') {
+        showNotification('✅ Offline registration synced successfully!', 'success');
+      }
+    });
+  }
+</script>
+</body>
+</html>
