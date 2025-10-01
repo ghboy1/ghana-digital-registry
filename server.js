@@ -22,6 +22,11 @@ app.use('/', require('./routes/main'));
 app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
 
+const port = process.env.PORT || 3000;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🇬🇭 Ghana Birth & Death Registry System running on http://localhost:${PORT}`);
