@@ -17,20 +17,31 @@ app.use(session({
   cookie: { secure: false } // set to true if using HTTPS
 }));
 
+// Middleware
+app.use(express.json());
+
+// Basic route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Ghana Birth and Death Registry API is running!',
+    status: 'OK'
+  });
+});
+
+// Health check
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'Healthy' });
+});
+
 // Routes
 app.use('/', require('./routes/main'));
 app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
+app.use('/certificates', require('./routes/certificates'));
 
-const port = process.env.PORT || 3000;
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on port ${port}`);
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`🇬🇭 Ghana Birth & Death Registry System running on http://localhost:${PORT}`);
+// Start server - CRITICAL FOR RAILWAY
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`System started successfully! Open your browser and visit the URL above.`);
 });
-// Add with other route imports
-app.use('/certificates', require('./routes/certificates'));
